@@ -5,7 +5,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/gradle-scopes
+    working_directory: ~/npm-with-dev-dependencies
     
     docker:
       # specify the version you desire here
@@ -14,5 +14,6 @@ jobs:
     steps:
     
       - checkout
-      - run: yarn
+      - run: npm install #--save-dev      
       - run: bash <(curl -s https://copilot.blackducksoftware.com/ci/circle/scripts/upload)
+      - run: bash <(curl -s https://scripts.scantist.com/staging/ci-circle-jar.sh)
